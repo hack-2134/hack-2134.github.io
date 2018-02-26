@@ -28,9 +28,20 @@
   <img id="slide1" src="https://docs.google.com/uc?id=1rdMgvrnuKaEN6PsGg7dGlaHC7C05yYtC">
   <button id='forward'>advance slides</button>
   <br>
+  <button id='rotateRight'>rotate clockwise</button>
+  <button id='rotateLeft'>rotate counterclockwise</button>
   <p id='counter'></p>
   <script type="text/javascript">
-    i={count:70, total:0};
+    i={count:0, total:0};
+    var rot={deg:0};
+    function resetRotation(img){
+      rot.deg=0;
+      $(img).css({
+        "-webkit-transform":"rotate("+rot.deg+'deg)',
+        "-moz-transform": "rotate("+rot.deg+'deg)',
+        "transform": "rotate("+rot.deg+'deg)'
+        });
+    };
     function advance(lines){
       if (i.count>lines.length-1){
         i.count=0;
@@ -65,13 +76,49 @@
         document.getElementById('counter').innerHTML=i.count+' out of '+i.total;
         // alert(i.total);
       },"text");
+      resetRotation('#slide1');
+      // rot.deg=0;
+      // $('#slide1').css({
+      //   "-webkit-transform":"rotate("+rot.deg+'deg)',
+      //   "-moz-transform": "rotate("+rot.deg+'deg)',
+      //   "transform": "rotate("+rot.deg+'deg)'
+      //   });
     });
     $('#back').click(function(){
        $.get('Queenstown.txt', function(data){
         var lines=data.split('\n');
         back(lines);
-        document.getElementById('counter').innerHTML=i.count+' out of '+i.total;
+        document.getElementById('counter').innerHTML=(i.count+1)+' out of '+i.total;
       },"text");
+       resetRotation('#slide1');
+    });
+    $('#rotateRight').click(function(){
+      if(rot.deg==270){
+        rot.deg=0;
+      } 
+      else{
+      rot.deg+=90;
+      }
+      $('#slide1').css({
+        "-webkit-transform":"rotate("+rot.deg+'deg)',
+        "-moz-transform": "rotate("+rot.deg+'deg)',
+        "transform": "rotate("+rot.deg+'deg)'
+        });
+    });
+      $('#rotateLeft').click(function(){
+      if(rot.deg==-270){
+        rot.deg=0;
+      } 
+      else{
+      rot.deg-=90;
+      }
+      $('#slide1').css({
+        "-webkit-transform":"rotate("+rot.deg+'deg)',
+        "-moz-transform": "rotate("+rot.deg+'deg)',
+        "transform": "rotate("+rot.deg+'deg)'
+        });
+      // alert(rot.deg);
+      
     });
     // i=0;
     // function forward (i){
