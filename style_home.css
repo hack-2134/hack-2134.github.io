@@ -4,11 +4,6 @@
 body{
   background-color: beige;
 }
-#map{
-  width: 100%;
-  height: 550px;
-  background-color: grey;
-}
 .Nav{
   /*position: fixed;*/
   background-color: #12F2B3;
@@ -16,6 +11,7 @@ body{
   overflow: hidden;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr;
+
 }
 .Nav a{
   /*float: left;*/
@@ -30,32 +26,68 @@ body{
   color: black;
 }
 img {
-  position: absolute;
+  /*position: absolute;*/
   image-orientation: from-image;
-  /*padding-top: 2em;*/
-  padding-left: 4em;
-  width: auto;
-  height: 100%;
-  /*padding-left: 2em;*/
-}
-.container {
-  margin-top: 7em;
-  position: relative;
   width: 100%;
   height: auto;
+  /*padding-top: 2em;*/
+  /*padding-left: 4em;*/
+ /* width: 50%;
+  height: auto;*/
+  /*padding-left: 2em;*/
+}
+#map{
+  width: 100%;
+}
+.container {
+  /*width: 100%;*/
+  /*height: auto;*/
+  background-color: beige;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
   border: dotted;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
   /*padding-left: 2em;*/
 
 }
-#counter{
-  position: absolute;
-  top: 0em;
-  right: 40em;
+.container2{
+  background-color: black;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  border: dotted;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr auto;
+}
+.container #map{
+  grid-column: 2;
+  grid-row: 1;
+}
+.container2 img{
+  grid-column: 2;
+  grid-row: 1;
+  position: center;
+}
+.container2 #counter{
+  /*position: absolute;*/
+  /*top: 0em;*/
+  /*right: 40em;*/
+  text-align: center;
+  grid-row: 2;
+  grid-column: 2;
   color: white;
   /*padding-top: 20em;*/
   z-index: 5;
 }
-#forward{
+.container2 #forward{
+  z-index: 3;
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: 50%;
  /* background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png);*/
   /*background-repeat: no-repeat;*/
 /*  position: absolute;
@@ -72,39 +104,48 @@ img {
   /*left: 2em; */
   cursor: pointer;
   background-color: transparent;
-  position: absolute;
+  /*position: absolute;*/
   border:none;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
+  /*top: 50%;*/
+  width: 10%;
+  /*margin-top: -22px;
+  padding: 16px;*/
+  height:10%;
   color: white;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  right: 4em;
+  /*top:50%;*/
+  /*margin-left: 92%;*/
+  /*right: 4em;*/
    /*for landscape, right position is 4em. 24.5em for portrate. changed to pixles because zooming in on page messes up positioning*/
 
 }
-#back{
+.container2 #back{
+  z-index: 3;
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 50%;
+  margin-left:90%;
   cursor: pointer;
   background-color: transparent;
-  position: absolute;
+  /*position: absolute;*/
   border:none;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
+ /* top: 50%;*/
+  width: 10%;
+  height: 10%;
+  /*margin-top: -22px;
+  padding: 16px;*/
   color: white;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  right: 39em;
+  /*right: 39em;*/
 }
 #forward:hover, #back:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(255,255,255,.6);
 }
 /*img:hover{
   width: 40em;
