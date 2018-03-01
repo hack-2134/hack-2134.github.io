@@ -6,7 +6,7 @@ function initMap(){
   var locations=[
     ['Sydney', -34.397, 150.644],
     ['Queenstown', -45.0312, 168.6626],
-    ['Wanaka', -45.7032, 169.1321],
+    ['Wanaka', -44.7032, 169.1321],
     ['Franz-Joseph', -43.3873, 170.1833],
     ['Nelson', -41.2706, 173.2840],
     ['Wellington', -41.2865, 174.7762],
