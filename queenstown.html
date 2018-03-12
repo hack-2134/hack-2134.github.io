@@ -4,9 +4,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="zoom.js"></script>
   <script type="text/javascript" src="transition.js"></script>
-  <title>Day1-2 San Francisco to Queenstown via Auckland</title>
   <link rel="stylesheet" type="text/css" href="style_home.css">
   <link rel="stylesheet" type="text/css" href="zoom.css">
+  <title>Day1-2 San Francisco to Queenstown via Auckland</title>
 </head>
 <body>
   <div class="Nav">
@@ -27,7 +27,7 @@
   <p>Paragraph about what we did</p>
   <div class='container2'>
     <img id="slide1" src="https://docs.google.com/uc?id=1rdMgvrnuKaEN6PsGg7dGlaHC7C05yYtC" data-action='zoom'>
-    <p id='counter'>1 out of 85</p>
+    <p id='counter'></p>
     <button id='back'>&#10094;</button>
     <button id='forward'>&#10095;</button>
   </div>
@@ -39,162 +39,17 @@
   <br>
   <button id='rotateRight'>rotate clockwise</button>
   <button id='rotateLeft'>rotate counterclockwise</button>
+  <!-- <img src="https://docs.google.com/uc?id=1rdMgvrnuKaEN6PsGg7dGlaHC7C05yYtC" data-action='zoom'> -->
+  <script type="text/javascript" src='trippage.js'>
+  </script>
   <script type="text/javascript">
+    var lines;    
     i={count:0, total:0};
-    var rot={deg:0};
-    function resetRotation(img){
-      rot.deg=0;
-      $(img).css({
-        "-webkit-transform":"rotate("+rot.deg+'deg)',
-        "-moz-transform": "rotate("+rot.deg+'deg)',
-        "transform": "rotate("+rot.deg+'deg)'
-        });
-    };
-    function advance(lines){  //check if I can add some check for portrate and move forward button accordingly,
-      if (i.count>lines.length-1){
-        i.count=0;
-        $('#slide1').attr('src',lines[i.count]);
-      }
-      else{
-        $('#slide1').attr('src',lines[i.count]);
-        i.count++;
-        }
-      // alert(i.count);
-    }
-    function back(lines){
-      if (i.count<0){
-        i.count=lines.length-1;
-        $('#slide1').attr('src',lines[i.count]);
-      }
-      else{
-        $('#slide1').attr('src',lines[i.count]);
-        i.count--;
-      }
-      // alert(i.count);
-    }
-    // $.get('Queenstown.txt', function(data){
-    //   var lines=data.split('\n');
-    // }
-    $('#forward').click(function(){
-      $.get('Queenstown.txt', function(data){
-        var lines=data.split('\n');
-        i.total=lines.length;
-        advance(lines);
-        // $('p').attr('text',i.count+' out of '+i.total);
-        document.getElementById('counter').innerHTML=i.count+' out of '+i.total;
-        // alert(i.total);
-      },"text");
-      resetRotation('#slide1');
-      // rot.deg=0;
-      // $('#slide1').css({
-      //   "-webkit-transform":"rotate("+rot.deg+'deg)',
-      //   "-moz-transform": "rotate("+rot.deg+'deg)',
-      //   "transform": "rotate("+rot.deg+'deg)'
-      //   });
-    });
-    $('#back').click(function(){
-       $.get('Queenstown.txt', function(data){
-        var lines=data.split('\n');
-        back(lines);
-        document.getElementById('counter').innerHTML=(i.count+1)+' out of '+i.total;
-      },"text");
-       resetRotation('#slide1');
-    });
-    $('#rotateRight').click(function(){
-      if(rot.deg==270){
-        rot.deg=0;
-      } 
-      else{
-      rot.deg+=90;
-      }
-      $('#slide1').css({
-        "-webkit-transform":"rotate("+rot.deg+'deg)',
-        "-moz-transform": "rotate("+rot.deg+'deg)',
-        "transform": "rotate("+rot.deg+'deg)',
-        // 'height':'20em',
-        // 'width':'auto'
-        });
-    });
-      $('#rotateLeft').click(function(){
-      if(rot.deg==-270){
-        rot.deg=0;
-      } 
-      else{
-      rot.deg-=90;
-      }
-      $('#slide1').css({
-        "-webkit-transform":"rotate("+rot.deg+'deg)',
-        "-moz-transform": "rotate("+rot.deg+'deg)',
-        "transform": "rotate("+rot.deg+'deg)'
-        });
-    });
-    // i=0;
-    // function forward (i){
-    //   $.get('Queenstown.txt', function(data){
-    //     var lines=data.split('\n');
-    //     console.log(i.count);
-    //     if (i.count>lines.length-1) //check this.
-    //     {
-    //       i.count=0;;
-    //       $('#slide1').attr('src',lines[i.count]);
-    //     }
-    //     else{
-    //       $('#slide1').attr('src',lines[i.count]);
-    //       i.count++;
-    //     }
-    //   }, "text");
-    // }
-    // function advance (){
-    //    $.get('Queenstown.txt', function(data){
-    //     var lines=data.split('\n');
-    //     console.log(i);
-    //     if (i>lines.length-1) //check this.
-    //     {
-    //       i=0;
-    //       $('#slide1').attr('src',lines[i]);
-    //     }
-    //     else{
-    //       $('#slide1').attr('src',lines[i]);
-    //       i++;
-    //     }
-    //   }, "text");}
-    // $('button').click(getFile());
-    // // $('#forward').click(forward(i));
-    // $('#forward').click(function(){
-    //   $.get('Queenstown.txt', function(data){
-    //     var lines=data.split('\n');
-    //     console.log(i);
-    //     if (i>lines.length-1) //check this.
-    //     {
-    //       i=0;
-    //       $('#slide1').attr('src',lines[i]);
-    //     }
-    //     else{
-    //       $('#slide1').attr('src',lines[i]);
-    //       i++;
-    //     }
-    //   }, "text");
-    // });
-    // $('#back').click(function(){
-    //   $.get('Queenstown.txt', function(data){
-    //     var lines=data.split('\n');
-    //     console.log(i);
-    //     if (i>lines.length-1) //check this.
-    //     {
-    //       i=0;
-    //       $('#slide1').attr('src',lines[i]);
-    //     }
-    //     else if (i<0)
-    //     {
-    //       i=lines.length-1;
-    //       $('#slide1').attr('src',lines[i]);
-    //     }
-    //     else{
-    //       $('#slide1').attr('src',lines[i]);
-    //       i--;
-    //     }
-    //   }, "text");
-    // });
+    $.get('Queenstown.txt', function(data){
+      lines=data.split('\n');
+      i.total=lines.length;
+      document.getElementById('counter').innerHTML=(i.count+1)+' out of '+(i.total-1);
+    }, 'text');
   </script>
 
 </body>

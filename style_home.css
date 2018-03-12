@@ -39,6 +39,9 @@ img {
 #map{
   width: 100%;
 }
+#map_home{
+  width: 100%;
+}
 .container {
   /*width: 100%;*/
   /*height: auto;*/
@@ -56,7 +59,7 @@ img {
 .container2{
   background-color: black;
   width: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   display: grid;
   border: dotted;
   grid-gap: 10px;
@@ -70,7 +73,10 @@ img {
 .container2 img{
   grid-column: 2;
   grid-row: 1;
-  position: center;
+  object-fit: contain;
+  max-height: 417px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container2 #counter{
   /*position: absolute;*/

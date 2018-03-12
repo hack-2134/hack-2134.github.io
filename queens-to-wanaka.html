@@ -2,7 +2,11 @@
 <html>
 <head>
   <title>Queenstown to Wanaka</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="zoom.js"></script>
+  <script type="text/javascript" src="transition.js"></script>
   <link rel="stylesheet" type="text/css" href="style_home.css">
+  <link rel="stylesheet" type="text/css" href="zoom.css">
 </head>
 <body>
    <div class="Nav">
@@ -19,6 +23,68 @@
     <a href="Sydney.html">Sydney</a>
     <a href="Melbourne.html">Melbourne</a>
   </div>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d255974.4080827301!2d168.72368058115455!3d-44.85935562999923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xa9d51df1d7a8de5f%3A0x500ef868479a600!2sQueenstown%2C+New+Zealand!3m2!1d-45.0311622!2d168.6626435!4m5!1s0xa9d5461db9ec2d6f%3A0x500ef868479c1e0!2sWanaka%2C+New+Zealand!3m2!1d-44.7031813!2d169.13209809999998!5e0!3m2!1sen!2sus!4v1518207716051" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <h1>Queenstown to Wanaka</h1>
+  <p>Paragraph about what we did</p>
+  <div class='container2'>
+    <img id="slide1" src="https://docs.google.com/uc?id=1KGLRBdnaBpQprFqHCFE6ktos56Lfb8t9" data-action='zoom'>
+    <p id='counter'></p>
+    <button id='back'>&#10094;</button>
+    <button id='forward'>&#10095;</button>
+  </div>
+  <div class='container'>
+    <iframe id=map src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d255974.4080827301!2d168.72368058115455!3d-44.85935562999923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xa9d51df1d7a8de5f%3A0x500ef868479a600!2sQueenstown%2C+New+Zealand!3m2!1d-45.0311622!2d168.6626435!4m5!1s0xa9d5461db9ec2d6f%3A0x500ef868479c1e0!2sWanaka%2C+New+Zealand!3m2!1d-44.7031813!2d169.13209809999998!5e0!3m2!1sen!2sus!4v1518207716051" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <br>
+  </div>
 </body>
+<script type="text/javascript" src="trippage.js"></script>
+<script type="text/javascript">
+    var lines;    
+    var i={count:0, total:0};
+    $.get('Wanaka.txt', function(data){
+        lines=data.split('\n');
+        i.total=lines.length;
+        document.getElementById('counter').innerHTML=(i.count+1)+' out of '+(i.total-1);
+      }, 'text');
+    // var rot={deg:0};
+    // function resetRotation(img){
+    //   rot.deg=0;
+    //   $(img).css({
+    //     "-webkit-transform":"rotate("+rot.deg+'deg)',
+    //     "-moz-transform": "rotate("+rot.deg+'deg)',
+    //     "transform": "rotate("+rot.deg+'deg)'
+    //     });
+    // };
+    // function advance(lines){ 
+    //   if (i.count==lines.length-2){
+    //     i.count=0;
+    //     $('#slide1').attr('src',lines[i.count]);
+    //   }
+    //   else{
+    //     i.count++;
+    //     $('#slide1').attr('src',lines[i.count]);
+    //     }
+    // }
+    // function back(lines){
+    //   if (i.count==0){
+    //     i.count=lines.length-2;
+    //     $('#slide1').attr('src',lines[i.count]);
+    //   }
+    //   else{
+    //     i.count--;
+    //     $('#slide1').attr('src',lines[i.count]);
+    //   }
+    // }
+    // $('#forward').click(function(){
+    //     advance(lines);
+    //     console.log(i.count+' forward');
+    //     document.getElementById('counter').innerHTML=(i.count+1)+' out of '+(i.total-1);
+    //     resetRotation('#slide1');
+    // });
+    // $('#back').click(function(){
+    //     back(lines);
+    //     console.log(i.count+' back');
+    //     document.getElementById('counter').innerHTML=(i.count+1)+' out of '+(i.total-1);
+    //     resetRotation('#slide1');
+    // });
+  </script>
 </html>

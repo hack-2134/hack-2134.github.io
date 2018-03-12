@@ -16,8 +16,7 @@ function initMap(){
     ['Port Douglas', -16.4836, 145.4653],
     ['Melbourne', -37.8136, 144.9631]
     ];
-  debugger;
-  var map = new google.maps.Map(document.getElementById('map'),{
+  var map = new google.maps.Map(document.getElementById('map_home'),{
     center: {lat: -30.397, lng: 150.644}, //Adds a center pin
     zoom: 4
   });
